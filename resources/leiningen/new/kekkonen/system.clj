@@ -1,8 +1,19 @@
 (ns {{name}}.system
   (:require [com.stuartsierra.component :as component]
-            [system.components.http-kit :as http-kit]
+            [palikka.components.http-kit :as http-kit]
             [{{name}}.handler :as handler]))
 
 (defn new-system [config]
-  (let [system (component/map->SystemMap {:counter (atom 0)})]
-    (assoc system :http (http-kit/new-web-server (:port config) (handler/new-app system)))))
+  (println config)
+  (component/map->SystemMap
+    {:state (reify component/Lifecycle
+              (start [_] {:counter (atom 0)}))
+     :http (component/using
+             (http-kit/create
+               (:http config)
+               {:fn
+                (if (:dev-mode? config)
+                  ; re-create handler on every request
+                  (fn [system] #((handler/create system) %))
+                  handler/create)})
+             [:state])}))

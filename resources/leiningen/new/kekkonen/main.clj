@@ -4,7 +4,7 @@
   (:gen-class))
 
 (defn -main [& [port]]
-  (let [port (if port (Integer/parseInt port) 3000)]
+  (let [port (or port 3000)]
     (require '{{name}}.system)
-    (set-init! #((resolve '{{name}}.system/new-system) {:port port}))
-    (go) (println "server running in port" port)))
+    (set-init! #((resolve '{{name}}.system/new-system) {:http {:port port}}))
+    (go)))
