@@ -4,7 +4,6 @@
             [{{name}}.handler :as handler]))
 
 (defn new-system [config]
-  (println config)
   (component/map->SystemMap
     {:state (reify component/Lifecycle
               (start [_] {:counter (atom 0)}))
