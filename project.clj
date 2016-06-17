@@ -1,4 +1,4 @@
-(defproject kekkonen/lein-template "0.1.2"
+(defproject kekkonen/lein-template "0.3.0-SNAPSHOT"
   :description "Kekkonen template"
   :url "https://github.com/metosin/kekkonen-template"
   :license {:name "Eclipse Public License"
