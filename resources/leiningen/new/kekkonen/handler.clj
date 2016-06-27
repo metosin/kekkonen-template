@@ -38,7 +38,7 @@
 
 (defnk create [state]
   (cqrs-api
-    {:swagger {:ui "/api-docs"
+    {:swagger {:ui "/"
                :spec "/swagger.json"
                :data {:info {:title "Kekkonen {{name}} API"
                              :description "created with http://kekkonen.io"}}}
