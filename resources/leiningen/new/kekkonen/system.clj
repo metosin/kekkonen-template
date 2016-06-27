@@ -5,8 +5,7 @@
 
 (defn new-system [config]
   (component/map->SystemMap
-    {:state (reify component/Lifecycle
-              (start [_] {:counter (atom 0)}))
+    {:state {:counter (atom 0)}
      :http (component/using
              (http-kit/create
                (:http config)

@@ -18,4 +18,4 @@ java -server -jar target/{{name}}.jar
 
 ## License
 
-Copyright © 2015 FIXME
+Copyright © 2016 FIXME
