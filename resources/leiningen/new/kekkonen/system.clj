@@ -5,7 +5,8 @@
 
 (defn new-system [config]
   (component/map->SystemMap
-    {:state {:counter (atom 0)}
+    {:state {:counter (atom 0)
+             :file (atom nil)}
      :http (component/using
              (http-kit/create
                (:http config)
